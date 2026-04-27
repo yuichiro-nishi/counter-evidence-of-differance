@@ -1,0 +1,72 @@
+{
+  "metadata": {
+    "timestamp": "2026-04-22T05:34:09.790282",
+    "device": "cpu",
+    "torch_version": "2.11.0+cpu",
+    "cuda_available": false,
+    "python_version": "3.13.5"
+  },
+  "gpt2": {
+    "pass": 8,
+    "total": 8,
+    "all_pass": true
+  },
+  "pythia": {
+    "pass": 8,
+    "total": 8,
+    "all_pass": true
+  },
+  "tinyllama": {
+    "pass": 8,
+    "total": 8,
+    "all_pass": true
+  },
+  "T9_architecture_diversity": {
+    "architectures_tested": [
+      "decoder-only Transformer (GPT-2 family)",
+      "decoder-only Transformer (GPT-NeoX family)",
+      "decoder-only Transformer (Llama-2 family)"
+    ],
+    "distinct_architecture_families": 3,
+    "status": "PASS",
+    "pass": true
+  },
+  "T10_cross_model_geometry": {
+    "pairs": [
+      {
+        "model_a": "gpt2",
+        "model_b": "pythia",
+        "common_dim": 768,
+        "mean_cosine_after_alignment": 0.7590384667554009,
+        "random_baseline_mean_cosine": 0.6886629589735213,
+        "geometry_above_baseline": true
+      },
+      {
+        "model_a": "gpt2",
+        "model_b": "tinyllama",
+        "common_dim": 768,
+        "mean_cosine_after_alignment": 0.6916326617678675,
+        "random_baseline_mean_cosine": 0.662467079738619,
+        "geometry_above_baseline": true
+      },
+      {
+        "model_a": "pythia",
+        "model_b": "tinyllama",
+        "common_dim": 768,
+        "mean_cosine_after_alignment": 0.8757319499835879,
+        "random_baseline_mean_cosine": 0.8615291710727132,
+        "geometry_above_baseline": true
+      }
+    ],
+    "mean_aligned_cosine": 0.7754676928356187,
+    "mean_random_baseline_cosine": 0.7375530699282845,
+    "all_pairs_above_baseline": true,
+    "status": "PASS",
+    "pass": true
+  },
+  "overall": {
+    "all_models_all_tests_pass": true,
+    "t9_pass": true,
+    "t10_pass": true
+  }
+}

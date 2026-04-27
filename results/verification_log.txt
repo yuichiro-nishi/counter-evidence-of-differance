@@ -1,0 +1,176 @@
+======================================================================
+Counter-Evidence of Différance: Reproducibility Verification
+======================================================================
+Timestamp: 2026-04-28T00:01:49.616558
+Dependencies: Pure Python (no external libraries)
+Random seed: 42
+
+======================================================================
+TEST 1: Embedding Determinacy
+======================================================================
+Claim: Each token has a fixed embedding vector with determinate values.
+Vocabulary size: 16, Embedding dimension: 8
+
+  Token 0: [-0.144090, -0.172904, -0.111316, 0.701984, -0.127588, -1.497353, 0.332318, -0.267337]
+  Token 1: [-0.216959, 0.115885, 0.232298, 1.163559, 0.656637, 0.110507, -0.738322, -1.014662]
+  Token 2: [0.246342, 1.311081, 0.041657, -0.106323, 0.531776, -1.453545, -0.312277, 0.490363]
+
+  Determinacy check: embedding[0] accessed twice.
+  First access:  [-0.144090, -0.172904, -0.111316, 0.701984, -0.127588, -1.497353, 0.332318, -0.267337]
+  Second access: [-0.144090, -0.172904, -0.111316, 0.701984, -0.127588, -1.497353, 0.332318, -0.267337]
+  Identical: True
+
+  RESULT: Embedding values are determinate. ✓
+
+======================================================================
+TEST 2: Inner Product Requires Determinate Operands
+======================================================================
+Claim: The inner product is defined iff both operands are determinate.
+
+  Token 0 embedding: [-0.1441, -0.1729, -0.1113, 0.7020, -0.1276, -1.4974, 0.3323, -0.2673]
+  Token 1 embedding: [-0.2170, 0.1159, 0.2323, 1.1636, 0.6566, 0.1105, -0.7383, -1.0147]
+  Inner product: 0.578818
+  Cosine similarity: 0.179093
+
+  The inner product produced a single determinate scalar value.
+  This operation is undefined if any component is indeterminate.
+
+  RESULT: Inner product yields determinate value from determinate operands. ✓
+
+======================================================================
+TEST 3: Softmax Produces a Valid Probability Distribution
+======================================================================
+Claim: For any input, softmax output satisfies P(i)>0 and Σ P(i)=1.
+
+  Case 'uniform':
+    Logits (first 4): [1.00, 1.00, 1.00, 1.00] ...
+    Probs  (first 4): [0.062500, 0.062500, 0.062500, 0.062500] ...
+    All P(i) > 0: True
+    Σ P(i) = 1.000000000000000
+    |Σ P(i) - 1| = 0.00e+00
+    Valid distribution: True
+
+  Case 'random':
+    Logits (first 4): [2.73, -2.61, -0.24, 0.65] ...
+    Probs  (first 4): [0.103955, 0.000500, 0.005303, 0.012921] ...
+    All P(i) > 0: True
+    Σ P(i) = 1.000000000000000
+    |Σ P(i) - 1| = 0.00e+00
+    Valid distribution: True
+
+  Case 'extreme':
+    Logits (first 4): [100.00, 0.00, 0.00, 0.00] ...
+    Probs  (first 4): [1.000000, 0.000000, 0.000000, 0.000000] ...
+    All P(i) > 0: True
+    Σ P(i) = 1.000000000000000
+    |Σ P(i) - 1| = 0.00e+00
+    Valid distribution: True
+
+  Case 'negative':
+    Logits (first 4): [-5.00, -3.00, -1.00, 0.00] ...
+    Probs  (first 4): [0.000001, 0.000011, 0.000078, 0.000212] ...
+    All P(i) > 0: True
+    Σ P(i) = 1.000000000000000
+    |Σ P(i) - 1| = 0.00e+00
+    Valid distribution: True
+
+  RESULT: Softmax always produces a valid probability distribution. ✓
+
+======================================================================
+TEST 4: Self-Attention Computes All Scores Simultaneously
+======================================================================
+Claim: Attention scores for all token pairs are computed in one step.
+
+  Sequence length: 5
+  Scaling factor √d_k = √8 = 2.8284
+
+  Raw attention scores (QK^T/√d_k), 5×5 matrix:
+    Row 0: [+1.0593, +0.2046, +0.5417, +0.7810, +1.2337]
+    Row 1: [+0.2046, +1.2326, -0.0332, +0.5893, +0.7062]
+    Row 2: [+0.5417, -0.0332, +1.6003, +0.3546, -0.0718]
+    Row 3: [+0.7810, +0.5893, +0.3546, +1.9418, +0.5680]
+    Row 4: [+1.2337, +0.7062, -0.0718, +0.5680, +4.4153]
+
+  Attention weights (after softmax), each row sums to 1:
+    Row 0: [0.2519, 0.1072, 0.1502, 0.1907, 0.3000]  Σ=1.0000000000
+    Row 1: [0.1298, 0.3628, 0.1023, 0.1907, 0.2143]  Σ=1.0000000000
+    Row 2: [0.1720, 0.0968, 0.4956, 0.1426, 0.0931]  Σ=1.0000000000
+    Row 3: [0.1543, 0.1274, 0.1008, 0.4927, 0.1247]  Σ=1.0000000000
+    Row 4: [0.0378, 0.0223, 0.0102, 0.0194, 0.9102]  Σ=1.0000000000
+
+  Total attention scores computed: 25 (all pairs, one step)
+  All rows sum to 1: True
+  No sequential deferral: all 25 scores computed simultaneously.
+
+  RESULT: Attention is simultaneous, not sequential. ✓
+
+======================================================================
+TEST 5: Gradient Descent Converges to a Determinate State
+======================================================================
+Claim: Starting from random initialization, gradient descent converges.
+
+  Target vector:  [-0.1441, -0.1729, -0.1113, 0.7020, -0.1276, -1.4974, 0.3323, -0.2673]
+  Initial w:      [-1.0848, 0.5794, 1.1615, 5.8178, 3.2832, 0.5525, -3.6916, -5.0733]
+
+  Learning rate: 0.05
+  Iterations: 500
+  Initial loss: 84.367236
+  Final loss:   1.31e-30
+  Converged (loss < 1e-10): True
+
+  Final w:      [-0.1441, -0.1729, -0.1113, 0.7020, -0.1276, -1.4974, 0.3323, -0.2673]
+  Target:       [-0.1441, -0.1729, -0.1113, 0.7020, -0.1276, -1.4974, 0.3323, -0.2673]
+  Max |w_i - target_i|: 8.88e-16
+
+  Loss trajectory:
+    Step    0: L = 8.436724e+01
+    Step    1: L = 6.833746e+01
+    Step    5: L = 2.941704e+01
+    Step   10: L = 1.025709e+01
+    Step   50: L = 2.240912e-03
+    Step  100: L = 5.952175e-08
+    Step  200: L = 4.199307e-17
+    Step  500: L = 1.305010e-30
+
+  RESULT: Gradient descent converges from random initialization to determinate values. ✓
+
+======================================================================
+TEST 6: Trained Weights Are Frozen During Inference
+======================================================================
+Claim: After training, weights do not change during inference.
+
+  Number of inference calls: 100
+  Weights before == Weights after: True
+
+  Token 0 before: [-0.144090, -0.172904, -0.111316, 0.701984, -0.127588, -1.497353, 0.332318, -0.267337]
+  Token 0 after:  [-0.144090, -0.172904, -0.111316, 0.701984, -0.127588, -1.497353, 0.332318, -0.267337]
+
+  RESULT: Weights are frozen during inference. Determinacy is irreversible. ✓
+
+======================================================================
+TEST 7: EOS Token Terminates the Signifying Chain
+======================================================================
+Claim: The model can emit an EOS token, closing the chain.
+
+  EOS token ID: 15
+  Max generation steps: 50
+  Generated sequence: [6, 13, 10, 0, 13, 5, 15]
+  Sequence length: 7
+  Terminated by EOS: True
+
+  The signifying chain closed at step 7 by the system's own decision (EOS token selected via softmax).
+
+  RESULT: EOS token terminates generation. The chain does not defer indefinitely. ✓
+
+======================================================================
+SUMMARY
+======================================================================
+  Test 1 embedding determinacy: PASS
+  Test 2 inner product: PASS
+  Test 3 softmax: PASS
+  Test 4 attention: PASS
+  Test 5 gradient descent: PASS
+  Test 6 weight freezing: PASS
+  Test 7 eos termination: PASS
+
+  Overall: ALL TESTS PASSED

@@ -1,0 +1,176 @@
+{
+  "metadata": {
+    "script": "verify_properties.py",
+    "description": "Pure Python verification of mathematical properties for Counter-Evidence of Différance",
+    "timestamp": "2026-04-28T00:01:49.616558",
+    "random_seed": 42,
+    "python_dependencies": "None (Pure Python: math, random, json, os, datetime)"
+  },
+  "test_1_embedding_determinacy": {
+    "vocab_size": 16,
+    "embedding_dim": 8,
+    "sample_embedding_token_0": [
+      -0.14409032957792836,
+      -0.1729036003315193,
+      -0.11131586156766246,
+      0.7019837250988631,
+      -0.12758828378288709,
+      -1.4973534143409575,
+      0.33231834406771527,
+      -0.2673374784971682
+    ],
+    "determinacy_check_identical": true,
+    "pass": true
+  },
+  "test_2_inner_product": {
+    "token_0": [
+      -0.14409032957792836,
+      -0.1729036003315193,
+      -0.11131586156766246,
+      0.7019837250988631,
+      -0.12758828378288709,
+      -1.4973534143409575,
+      0.33231834406771527,
+      -0.2673374784971682
+    ],
+    "token_1": [
+      -0.216958684145195,
+      0.11588478670085507,
+      0.23229773690672087,
+      1.163558686599143,
+      0.6566365067986689,
+      0.11050717744383194,
+      -0.7383216023448206,
+      -1.014662367487717
+    ],
+    "inner_product": 0.5788176320682084,
+    "cosine_similarity": 0.179092766494987,
+    "is_determinate_scalar": true,
+    "pass": true
+  },
+  "test_3_softmax": {
+    "cases": [
+      {
+        "case": "uniform",
+        "sum": 1.0,
+        "deviation_from_1": 0.0,
+        "all_positive": true,
+        "pass": true
+      },
+      {
+        "case": "random",
+        "sum": 1.0,
+        "deviation_from_1": 0.0,
+        "all_positive": true,
+        "pass": true
+      },
+      {
+        "case": "extreme",
+        "sum": 1.0,
+        "deviation_from_1": 0.0,
+        "all_positive": true,
+        "pass": true
+      },
+      {
+        "case": "negative",
+        "sum": 1.0,
+        "deviation_from_1": 0.0,
+        "all_positive": true,
+        "pass": true
+      }
+    ],
+    "all_pass": true,
+    "pass": true
+  },
+  "test_4_attention": {
+    "seq_len": 5,
+    "n_scores_computed": 25,
+    "all_row_sums_equal_1": true,
+    "row_sums": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "attention_weights": [
+      [
+        0.25194796426452537,
+        0.10718871357121944,
+        0.15015917688828348,
+        0.19073857407639017,
+        0.2999655711995815
+      ],
+      [
+        0.12980157593813868,
+        0.36284766661743,
+        0.10232314941784294,
+        0.1906918036878765,
+        0.21433580433871183
+      ],
+      [
+        0.17195361492528982,
+        0.09676146243977174,
+        0.4955824224536156,
+        0.14260647685670944,
+        0.09309602332461343
+      ],
+      [
+        0.15434062998580014,
+        0.12742154218289234,
+        0.10076774880118078,
+        0.4927373768441515,
+        0.1247327021859753
+      ],
+      [
+        0.03779318661131812,
+        0.022300054238109032,
+        0.010242684596420863,
+        0.01942140723336154,
+        0.9102426673207904
+      ]
+    ],
+    "pass": true
+  },
+  "test_5_gradient_descent": {
+    "initial_loss": 84.36723597953362,
+    "final_loss": 1.305010130316791e-30,
+    "iterations": 500,
+    "learning_rate": 0.05,
+    "converged": true,
+    "loss_trajectory": {
+      "0": 84.36723597953362,
+      "1": 68.33746114342223,
+      "5": 29.417036236892383,
+      "10": 10.257086307444808,
+      "50": 0.0022409118078956167,
+      "100": 5.9521752401453604e-08,
+      "200": 4.1993067974857856e-17,
+      "500": 1.305010130316791e-30
+    },
+    "pass": true
+  },
+  "test_6_weight_freezing": {
+    "n_inferences": 100,
+    "weights_unchanged": true,
+    "pass": true
+  },
+  "test_7_eos_termination": {
+    "eos_token_id": 15,
+    "generated_sequence": [
+      6,
+      13,
+      10,
+      0,
+      13,
+      5,
+      15
+    ],
+    "sequence_length": 7,
+    "terminated_by_eos": true,
+    "pass": true
+  },
+  "summary": {
+    "all_pass": true
+  }
+}

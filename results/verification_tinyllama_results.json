@@ -1,0 +1,173 @@
+{
+  "model": "TinyLlama 1.1B",
+  "model_id": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+  "architecture": "decoder-only Transformer (Llama-2 family)",
+  "n_parameters": 1100048384,
+  "T1_embedding_determinacy": {
+    "shape": [
+      32000,
+      2048
+    ],
+    "token_id": 1,
+    "sample_values": [
+      -0.001091,
+      0.00193024,
+      -0.00166321,
+      0.00376892,
+      0.00107574,
+      0.00378418,
+      0.00068283,
+      -0.00017262
+    ],
+    "identical": true,
+    "all_finite": true,
+    "pass": true
+  },
+  "T2_inner_product": {
+    "token_a_id": 100,
+    "token_b_id": 200,
+    "token_a_text": "a",
+    "token_b_text": "�",
+    "inner_product": 7.909893604905587e-21,
+    "cosine_similarity": 1.011929364087838e-12,
+    "finite": true,
+    "pass": true
+  },
+  "T3_softmax": {
+    "sum": 1.0000126361846924,
+    "deviation": 1.2636184692382812e-05,
+    "all_nonneg": true,
+    "all_strictly_positive": true,
+    "positive_count": 32000,
+    "zero_count": 0,
+    "note": "Float32 limitations: rounding in sum, exp() underflow to 0. Proof is exact (A.3.2).",
+    "pass": true
+  },
+  "T4_attention": {
+    "seq_len": 6,
+    "n_scores": 36,
+    "n_layers": 22,
+    "n_heads": 32,
+    "max_row_deviation": 5.960464477539063e-08,
+    "all_rows_sum_to_one": true,
+    "pass": true
+  },
+  "T5_weight_freezing": {
+    "n_inferences": 10,
+    "identical": true,
+    "pass": true
+  },
+  "T6_eos_termination": {
+    "eos_token_id": 2,
+    "p_eos_min": 3.850856558074156e-07,
+    "p_eos_max": 0.6991499066352844,
+    "p_eos_trajectory": [
+      4.04e-06,
+      7.7e-07,
+      3.9e-07,
+      6.5e-07,
+      0.69914991
+    ],
+    "all_steps_positive": true,
+    "any_actual_eos": true,
+    "prompt_outcomes": [
+      {
+        "prompt_preview": "<|user|>\\nSay only \"hi\".</s>\\n<|assistant|>\\n",
+        "new_token_count": 5,
+        "ends_with_eos": true,
+        "eos_in_generation": true,
+        "reached_max_new_tokens": false,
+        "decoded_preview": "\"Hey!\"</s>"
+      },
+      {
+        "prompt_preview": "<|user|>\\nWhat is 2+2? One word.</s>\\n<|assistant|>\\n",
+        "new_token_count": 5,
+        "ends_with_eos": true,
+        "eos_in_generation": true,
+        "reached_max_new_tokens": false,
+        "decoded_preview": "2 + 2</s>"
+      },
+      {
+        "prompt_preview": "<|user|>\\nSay \"done\" and nothing else.</s>\\n<|assistant|>\\n",
+        "new_token_count": 3,
+        "ends_with_eos": true,
+        "eos_in_generation": true,
+        "reached_max_new_tokens": false,
+        "decoded_preview": "Done.</s>"
+      }
+    ],
+    "status": "PASS-STRICT",
+    "pass": true
+  },
+  "T8_prompt_determinacy": {
+    "n_runs": 100,
+    "bit_identical": true,
+    "max_abs_deviation": 0.0,
+    "status": "PASS",
+    "pass": true
+  },
+  "T7_gradient_descent": {
+    "n_steps": 200,
+    "n_trainable_params": 1100048384,
+    "optimizer": "AdamW(lr=5e-05)",
+    "initial_loss": 3.7089650630950928,
+    "final_loss": 0.30426013469696045,
+    "early_moving_avg": 3.630254646539688,
+    "late_moving_avg": 0.3095700752735138,
+    "reduction_ratio": 0.9147249696192546,
+    "monotonic_dropped": true,
+    "variance_first_segment": 3.303504467010498,
+    "variance_last_segment": 0.0016834904672577977,
+    "late_phase_stabilized": true,
+    "post_training_weights_stable": true,
+    "loss_trajectory_sample": [
+      3.708965,
+      5.058459,
+      3.827023,
+      0.809121,
+      7.614399,
+      0.639769,
+      1.973264,
+      0.404918,
+      1.020134,
+      0.327349,
+      1.183337,
+      0.400475,
+      0.385906,
+      0.360699,
+      0.313917,
+      0.3607,
+      0.396938,
+      0.356593,
+      0.338308,
+      0.357805,
+      0.358731,
+      0.359687,
+      0.354097,
+      0.355103,
+      0.348918,
+      0.353809,
+      0.353767,
+      0.352869,
+      0.349477,
+      0.351671,
+      0.349793,
+      0.350607,
+      0.349657,
+      0.349251,
+      0.348506,
+      0.348217,
+      0.348315,
+      0.34729,
+      0.347724,
+      0.346287
+    ],
+    "status": "PASS",
+    "pass": true
+  },
+  "summary": {
+    "pass": 8,
+    "total": 8,
+    "all_pass": true
+  }
+}

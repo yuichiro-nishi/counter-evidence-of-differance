@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+message: "If you reference this work, please cite it using the metadata below."
+title: "Counter-Evidence of Différance: A Refutation from Engineering and Mathematics"
+authors:
+  - family-names: "Nishi"
+    given-names: "Yuichiro"
+    email: "yuichiro@yuichironishi.com"
+    orcid: "https://orcid.org/0009-0006-3823-0313"
+type: article
+abstract: >-
+  Derrida's *différance* claims that meaning is never present — that it is
+  always produced through differences and perpetually deferred. The claim is
+  universal: it admits no domain in which meaning is exempt. This paper tests
+  that universality against engineering and mathematics, and finds that it
+  fails. Counter-evidence is presented from Transformer architecture,
+  Shannon's channel coding theorem, type systems and the Curry-Howard
+  correspondence, self-sufficient mathematical structures, and multilingual
+  embedding convergence. The paper reaches the opposite conclusion from
+  Gunkel (2025) on the same technical object (large language models).
+keywords:
+  - philosophy of language
+  - deconstruction
+  - Jacques Derrida
+  - différance
+  - Transformer architecture
+  - large language models
+  - Shannon information theory
+  - type systems
+  - Curry-Howard correspondence
+  - formal refutation
+license: CC-BY-4.0
+date-released: "2026-04-22"
+version: "1.0.0"
+# repository-code: "https://github.com/yuichiro-nishi/..."  # TODO: add after public repo creation
+# doi: "10.48550/arXiv.XXXX.XXXXX"                         # TODO: add after arXiv submission accepted (synced with arXiv DOI)
