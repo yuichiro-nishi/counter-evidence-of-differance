@@ -173,7 +173,7 @@ Play of differences & Attention weight computation & 2.3 \\
 Presence & Determinate output at each forward pass (operational) & 2.5 \\
 Deferral & $\rightarrow$ No corresponding layer: computation is simultaneous & 2.3 \\
 Positive content of sign & Embedding vector with fixed numerical values & 2.2 \\
-Endless chain of signifiers & $\rightarrow$ Terminated by EOS token & 2.6 \\
+Endless chain of signifiers & $\rightarrow$ Architectural EOS terminal state & 2.6 \\
 Indeterminacy & $\neq$ Stochasticity: the distribution itself is determinate & 3.2 \\
 \bottomrule
 \end{tabular}
@@ -256,7 +256,7 @@ A note on stochasticity: the softmax output is a probability distribution, not a
 
 (For a proof that softmax satisfies the axioms of a probability distribution, and for temperature scaling, see Appendix~A, Sec.~\ref{sec:A3}.)
 
-\subsection{Level 5---EOS Token: Termination by the Model Itself}
+\subsection{Level 5---EOS Token: An Internal Terminal State}
 \label{sec:eos}
 
 The generation process closes at the step the model emits a designated end-of-sequence (EOS) token. The architecture provides this terminal state through the same softmax mechanism that emits ordinary tokens, and EOS emission is empirically observed under appropriate contexts (Appendix~\ref{app:reproducibility}, T6).
@@ -615,7 +615,7 @@ Describing the output of next-token prediction, Gunkel writes that ``each token 
 
 The play of differences that Gunkel locates in the attention layer does not propagate indefinitely. It is reduced, in finitely many further computational steps, to a determinate distribution. Universal \emph{diff\'erance} requires the play to be unbounded and constitutive; here it is bounded and computational.
 
-\subsubsection{Bounded Generation Length, Emitted by the System Itself}
+\subsubsection{An Internal Terminal State, Reachable by the System Itself}
 
 The architecture provides an internal terminal state---an end-of-sequence (EOS) token---reachable through the model's own softmax mechanism (Sec.~\ref{sec:eos}). Gunkel's reading does not address this property. Under the universal reading of \emph{diff\'erance}, the chain of signifiers possesses no internal termination condition---every sign refers onward, without natural stopping point. The Transformer has a termination condition: a learned disposition emitted by the same softmax mechanism as other tokens, and when it is selected, the sequence closes at that step. What is claimed here is operational: an architectural terminal state exists, and its selection is empirically observed under appropriate contexts (Appendix~\ref{app:reproducibility}, T6). No stronger claim about completion of meaning is required, and no claim that EOS is the argmax continuation for every prompt; the weaker claim of architectural termination capability already lies outside what the universal reading of \emph{diff\'erance} can accommodate.
 
@@ -645,7 +645,7 @@ This is not an attack on Gunkel's scholarship but an extension of its scope. The
 
 \subsection{Summary of Counter-Evidence}
 
-This paper has presented counter-evidence against the universal reading of \emph{diff\'erance} from multiple independent domains: Transformer architecture (determinate embedding operands, attention simultaneity, softmax closure into a determinate probability distribution, termination of generation by the model itself, convergence under gradient descent, and reproducibility of inference over frozen parameters), Shannon's theorem, formally verified compilation (CompCert) within the fragment where the guarantee holds, and mathematical structures such as $\pi$ and the imaginary unit that are approximated independently across textual systems. The universal reading of \emph{diff\'erance} is also internally self-undermining. These lines are independent; together, they constitute a convergent refutation of the universal thesis.
+This paper has presented counter-evidence against the universal reading of \emph{diff\'erance} from multiple independent domains: Transformer architecture (determinate embedding operands, attention simultaneity, softmax closure into a determinate probability distribution, internal EOS terminal state reachable by the model's own selection, convergence under gradient descent, and reproducibility of inference over frozen parameters), Shannon's theorem, formally verified compilation (CompCert) within the fragment where the guarantee holds, and mathematical structures such as $\pi$ and the imaginary unit that are approximated independently across textual systems. The universal reading of \emph{diff\'erance} is also internally self-undermining. These lines are independent; together, they constitute a convergent refutation of the universal thesis.
 
 \subsection{Falsification Conditions}
 \label{sec:falsification}

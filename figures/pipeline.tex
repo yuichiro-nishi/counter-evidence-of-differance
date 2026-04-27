@@ -3,6 +3,7 @@
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta, positioning, decorations.pathreplacing, calc, fit}
 \usepackage{amsmath}
+\usepackage{amssymb}
 
 % Color scheme
 \definecolor{pipeblue}{RGB}{45,80,140}
@@ -67,7 +68,7 @@
 % Level 5
 \node[pipebox, below=0.65cm of L4] (L5) {%
     \textbf{Token Output / EOS}\\[1pt]
-    Token selected; chain terminates at EOS
+    EOS terminal state; sequence closes when selected
 };
 
 % === INPUT / OUTPUT LABELS ===
@@ -114,14 +115,14 @@
     Refutes: ``Meaning never becomes present.''
 };
 \node[refute, right=0.6cm of L5.east] {%
-    Model decides to stop.\\
+    EOS reachable through model's own selection.\\
     Refutes: ``The chain of signifiers is endless.''
 };
 
 % === BOTTOM SUMMARY LINE ===
 \node[below=0.7cm of output, font=\scriptsize, text=refutegray, text width=13cm, align=center] {%
     At every stage, every operation takes determinate inputs and produces determinate outputs.\\
-    There is no stage at which values become indeterminate, deferred, or fail to terminate.
+    No stage introduces indeterminacy, defers determination, or fails to complete.
 };
 
 \end{tikzpicture}
