@@ -31,5 +31,5 @@ keywords:
 license: CC-BY-4.0
 date-released: "2026-04-22"
 version: "1.0.0"
-# repository-code: "https://github.com/yuichiro-nishi/..."  # TODO: add after public repo creation
+repository-code: "https://github.com/yuichiro-nishi/counter-evidence-of-differance"
 # doi: "10.48550/arXiv.XXXX.XXXXX"                         # TODO: add after arXiv submission accepted (synced with arXiv DOI)
