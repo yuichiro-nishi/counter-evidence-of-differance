@@ -12,7 +12,7 @@ Derrida's *différance* claims that meaning is never present — that it is alwa
 
 It fails.
 
-In Transformer architecture, each token carries a determinate embedding before any contextual computation begins. The attention mechanism computes relevance through inner products of these vectors: an operation undefined unless both operands are determinate. At every forward pass, the softmax function compresses the full vocabulary into a probability distribution summing to exactly one. After training, model weights are frozen. Determinacy, once achieved, is irreversible.
+In Transformer architecture, each token carries a determinate embedding before any contextual computation begins. The attention mechanism computes relevance through inner products of these vectors: an operation undefined unless both operands are determinate. At every forward pass, the softmax function compresses the full vocabulary into a probability distribution summing to one (within floating-point precision in implementation). After training, model weights are frozen at a specific checkpoint; within the no-update inference regime, they remain fixed.
 
 These are not arguments. They are measurements — reproducible across three independently trained models (GPT-2, Pythia, TinyLlama), verified by scripts that any researcher can execute.
 
