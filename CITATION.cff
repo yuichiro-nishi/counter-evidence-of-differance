@@ -28,8 +28,8 @@ keywords:
   - Curry-Howard correspondence
   - formal refutation
 license: CC-BY-4.0
-date-released: "2026-04-22"
-version: "1.0.0"
+date-released: "2026-04-27"
+version: "0.9.0-pre-arxiv"
 repository-code: "https://github.com/yuichiro-nishi/counter-evidence-of-differance"
 preferred-citation:
   type: article

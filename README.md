@@ -2,7 +2,14 @@
 
 **A Refutation from Engineering and Mathematics**
 
-Yuichiro Nishi · Version 1.0.0 · 2026-04-22
+Yuichiro Nishi · Pre-arXiv draft · 2026-04-27
+
+DOI: pending arXiv submission
+
+Version: 0.9.0-pre-arxiv
+
+[![Paper License: CC BY 4.0](https://img.shields.io/badge/Paper%20License-CC%20BY%204.0-lightgrey.svg)](./LICENSE)
+[![Code License: MIT](https://img.shields.io/badge/Code%20License-MIT-blue.svg)](./LICENSE-CODE)
 
 ---
 
@@ -108,7 +115,7 @@ If you reference this work:
   title   = {Counter-Evidence of Différance: A Refutation from Engineering and Mathematics},
   author  = {Nishi, Yuichiro},
   year    = {2026},
-  note    = {Version 1.0.0, released 2026-04-22},
+  note    = {Version 0.9.0-pre-arxiv, released 2026-04-27},
   url     = {https://github.com/yuichiro-nishi/counter-evidence-of-differance}
 }
 ```
