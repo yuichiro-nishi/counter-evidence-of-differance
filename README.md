@@ -2,9 +2,11 @@
 
 **A Refutation from Engineering and Mathematics**
 
-Yuichiro Nishi · Pre-arXiv draft · 2026-04-27
+Author: Yuichiro Nishi<br>
+Date: 2026-04-27<br>
+Status: Pre-arXiv draft<br>
+Version: 0.9.0-pre-arxiv<br>
 DOI: pending arXiv submission
-Version: 0.9.0-pre-arxiv
 
 [![Paper License: CC BY 4.0](https://img.shields.io/badge/Paper%20License-CC%20BY%204.0-lightgrey.svg)](./LICENSE)
 [![Code License: MIT](https://img.shields.io/badge/Code%20License-MIT-blue.svg)](./LICENSE-CODE)
